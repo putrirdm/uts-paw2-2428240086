@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const c = require('../controllers/alatKemahController');
+const c = require('../controller/alatKemahController');
 const cekApiKey = require('../middlewares/cekApiKey');
 
 router.get('/', c.getAll);
