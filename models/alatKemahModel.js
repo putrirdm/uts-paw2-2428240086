@@ -7,16 +7,16 @@ const spesifikasiSchema = new mongoose.Schema({
 }, { _id: false });
 
 const alatKemahSchema = new mongoose.Schema({
+    kodeBarang: {
+    type: String,
+    required: [true, 'kodeBarang wajib diisi'],
+    trim: true
+  },
+
   nama: { 
     type: String, 
     required: [true, 'nama wajib diisi'], 
     trim: true 
-  },
-
-  kodeBarang: {
-    type: String,
-    required: [true, 'kodeBarang wajib diisi'],
-    trim: true
   },
 
   tarifHarian: {
@@ -27,9 +27,9 @@ const alatKemahSchema = new mongoose.Schema({
 
   spesifikasi: spesifikasiSchema,
 
-  gudang: { 
+  gudangId: { 
     type: mongoose.Schema.Types.ObjectId, 
-    ref: 'gudang' },
+    ref: 'Gudang' },
 
   kondisi: {
     type: String,
