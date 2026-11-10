@@ -1,0 +1,15 @@
+$kind: http-request
+url: http://localhost:3000/gudang
+method: POST
+headers:
+  x-api-key: "{"
+body:
+  type: json
+  content: "{\r
+
+    \ \"kode\":\"GD01\",\r
+
+    \ \"nama\": \"Gudang Utama\"  \r
+
+    }"
+order: 1000

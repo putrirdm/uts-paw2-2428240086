@@ -25,12 +25,6 @@ const alatKemahSchema = new mongoose.Schema({
     min : 0
   },
 
-  spesifikasi: spesifikasiSchema,
-
-  gudangId: { 
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: 'Gudang' },
-
   kondisi: {
     type: String,
     required: [true, 'kondisi wajib diisi'],
@@ -38,11 +32,11 @@ const alatKemahSchema = new mongoose.Schema({
     trim: true
   },
 
-  jumlahPengungsi: {
-  type: Number,
-  required: [true, 'jumlahPengungsi wajib diisi'],
-  min: 0
-},
+  spesifikasi: spesifikasiSchema,
+
+  gudangId: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Gudang' },
 
   createdAt: {
     type: Date,

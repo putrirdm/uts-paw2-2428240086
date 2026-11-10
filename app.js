@@ -4,8 +4,8 @@ const cors = require("cors");
 const mongoose = require('mongoose'); 
 const logger = require("./middlewares/logger");
 const errorHandler = require("./middlewares/errorHandler");
-const disasterReportsRoutes = require("./routes/disasterReportsRoutes");
-//const petugasRoutes = require('./routes/petugasRoutes');   // bersama require lainnya
+const alatKemahRoutes= require("./routes/alatKemahRoutes");
+const gudangRoutes = require('./routes/gudangRoutes');  
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/alat-kemah", alatKemahRoutes);
-//app.use('/petugas', petugasRoutes);  
+app.use('/gudang', gudangRoutes);  
 
 app.use((req, res) => {
   res.status(404).json({
