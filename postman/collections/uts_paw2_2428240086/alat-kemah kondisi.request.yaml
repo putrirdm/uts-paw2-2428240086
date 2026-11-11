@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{base_url}}alat-kemah?kondisi=baik"
+method: GET
+headers:
+  - key: x-api-key
+    value: "{{api-key}}"
+    disabled: true
+queryParams:
+  kondisi: baik
+body:
+  type: json
+  content: ""
+order: 11000

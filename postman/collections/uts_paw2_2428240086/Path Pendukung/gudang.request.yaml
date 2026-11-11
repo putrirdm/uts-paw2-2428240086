@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{base_url}}gudang"
+method: POST
+headers:
+  x-api-key: "{{api-key}}"
+body:
+  type: json
+  content: "{\r
+
+    \  \"kode\": \"GD06\",\r
+
+    \  \"nama\": \"Gudang Pengujian\"\r
+
+    }"
+order: 3000

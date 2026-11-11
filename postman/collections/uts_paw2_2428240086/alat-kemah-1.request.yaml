@@ -1,0 +1,5 @@
+$kind: http-request
+name: alat-kemah
+url: "{{base_url}}alat-kemah"
+method: GET
+order: 6000

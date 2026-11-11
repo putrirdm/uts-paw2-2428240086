@@ -6,6 +6,12 @@ exports.create = async (req, res) => {
     const data = await alatKemah.create(req.body);
     res.status(201).json(data);
   } catch (err) {
+    if (err.code === 11000) {
+      return res.status(409).json({
+        status: 409,
+        message: 'Kode barang sudah digunakan'
+      });
+    }
     res.status(400).json({ message: err.message });
   }
 };
@@ -15,25 +21,24 @@ exports.create = async (req, res) => {
 exports.getAll = async (req, res) => {
   const filter = {};
 
-  // Filtering
-  // if (req.query.kota) {
-  //   filter['alamat.kota'] = String(req.query.kota);
-  // }
-
+  //Filtering
   if (req.query.kodeBarang) {
-    filter.kodeBarang = String(req.query.kodeBarang).toLowerCase();
+    filter.kodeBarang = req.query.kodeBarang;
   }
 
   if (req.query.nama) {
-    filter.nama = String(req.query.nama).toLowerCase();
+    filter.nama = {
+      $regex: req.query.nama,
+      $options: 'i'
+    };
   }
 
   if (req.query.tarifHarian) {
-    filter.tarifHarian = String(req.query.tarifHarian);
+    filter.tarifHarian = Number(req.query.tarifHarian);
   }
 
   if (req.query.kondisi) {
-    filter.lokasi = String(req.query.kondisi);
+    filter.kondisi = String(req.query.kondisi);
   }
 
   // Pagination
@@ -50,7 +55,7 @@ exports.getAll = async (req, res) => {
 
     sort[sortField] = sortOrder;
   } else {
-    sort = { tanggal: -1 };
+    sort = { createdAt: -1 };
   }
 
   // Projection
@@ -72,7 +77,7 @@ exports.getAll = async (req, res) => {
 
   res.json({
     status: 200,
-    message: 'Data berhasil ditampilkan',
+    message: 'Data alat kemah berhasil ditampilkan',
     data: data,
     pagination: {
       totalData: totalData,
@@ -83,11 +88,36 @@ exports.getAll = async (req, res) => {
   });
 };
 
+
 exports.getById = async (req, res) => {
-  const data = await alatKemah.findById(req.params.id).populate('gudangId');
-  if (!data) throw errorHttp(404, 'Data tidak ditemukan');
-  res.json(data);
+  try {
+    const data = await alatKemah.findById(req.params.id)
+      .populate('gudangId');
+
+    if (!data) {
+      return res.status(404).json({
+        status: 404,
+        message: 'Data tidak ditemukan'
+      });
+    }
+
+    res.status(200).json(data);
+
+  } catch (err) {
+    if (err.name === 'CastError') {
+      return res.status(400).json({
+        status: 400,
+        message: 'Format ID tidak valid'
+      });
+    }
+
+    res.status(500).json({
+      status: 500,
+      message: 'Terjadi kesalahan pada server'
+    });
+  }
 };
+
 
 exports.update = async (req, res) => {
   const data = await alatKemah.findByIdAndUpdate(

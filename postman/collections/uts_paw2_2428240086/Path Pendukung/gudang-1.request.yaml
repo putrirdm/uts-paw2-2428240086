@@ -1,0 +1,12 @@
+$kind: http-request
+name: gudang
+url: "{{base_url}}gudang"
+method: GET
+headers:
+  - key: x-api-key
+    value: "{{api-key}}"
+    disabled: true
+body:
+  type: json
+  content: ""
+order: 2197

@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{base_url}}alat-kemah?kodeBarang=KMH-01&sort=tarifHarian"
+method: GET
+headers:
+  - key: x-api-key
+    value: "{{api-key}}"
+    disabled: true
+queryParams:
+  kodeBarang: KMH-01
+  sort: tarifHarian
+body:
+  type: json
+  content: ""
+order: 1000

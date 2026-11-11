@@ -1,0 +1,11 @@
+$kind: http-request
+url: "{{base_url}}alat-kemah/6af47e1e0fdd52a17e8ea031"
+method: GET
+headers:
+  - key: x-api-key
+    value: "{{api-key}}"
+    disabled: true
+body:
+  type: json
+  content: ""
+order: 8000

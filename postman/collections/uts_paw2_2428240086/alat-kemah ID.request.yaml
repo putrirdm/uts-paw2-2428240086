@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{base_url}}alat-kemah/6af3e144894b4b49668e5f39"
+method: GET
+order: 5000

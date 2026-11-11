@@ -10,7 +10,8 @@ const alatKemahSchema = new mongoose.Schema({
     kodeBarang: {
     type: String,
     required: [true, 'kodeBarang wajib diisi'],
-    trim: true
+    trim: true,
+    unique: true
   },
 
   nama: { 

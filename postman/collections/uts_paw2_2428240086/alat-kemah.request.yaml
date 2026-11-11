@@ -1,0 +1,29 @@
+$kind: http-request
+url: "{{base_url}}alat-kemah"
+method: POST
+headers:
+  x-api-key: "{{api-key}}"
+body:
+  type: json
+  content: "{\r
+
+    \  \"kodeBarang\": \"KMH-11\",\r
+
+    \  \"nama\": \"Tenda Pengujian\",\r
+
+    \  \"tarifHarian\": 50000,\r
+
+    \  \"kondisi\": \"baik\",\r
+
+    \  \"spesifikasi\": {\r
+
+    \    \"kapasitas\": \"4 orang\",\r
+
+    \    \"bahan\": \"Polyester Waterproof\"\r
+
+    \  },\r
+
+    \  \"gudangId\": \"6af47a020fdd52a17e8ea02c\"\r
+
+    }"
+order: 3000

@@ -1,0 +1,27 @@
+$kind: http-request
+name: alat-kemah
+url: "{{base_url}}alat-kemah"
+method: POST
+headers:
+  x-api-key: "{{api-key}}"
+  Content-Type: application/json
+body:
+  type: json
+  content: "{\r
+
+    \  \"kodeBarang\": \"KMH-11\",\r
+
+    \  \"tarifHarian\": 50000,\r
+
+    \  \"kondisi\": \"baik\",\r
+
+    \  \"spesifikasi\": {\r
+
+    \    \"kapasitas\": \"4 orang\",\r
+
+    \    \"bahan\": \"Polyester Waterproof\"\r
+
+    \  }\r
+
+    }"
+order: 2000
